@@ -46,10 +46,10 @@ int lastOcc(int arr[], int n, int key) {
 
 int main()
 {
-    int arr[5] = {1, 2, 3, 3, 5};
+    int arr[12] = {1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 35};
    
-    cout<<"First Occurence of 3 is at "<<firstOcc(arr, 5, 3)<<" index"<<"\n";
-    cout<<"Last Occurence of 3 is at "<<lastOcc(arr, 5, 3)<<" index";
+    cout<<"First Occurence of 3 is at "<<firstOcc(arr, 12, 3)<<" index"<<"\n";
+    cout<<"Last Occurence of 3 is at "<<lastOcc(arr, 12, 3)<<" index";
    
    return 0;
 }
