@@ -1,55 +1,59 @@
-#include <iostream>
+#include<iostream>
 
 using namespace std;
 
-int firstOcc(int arr[], int n, int key) {
-    int start = 0;
-    int end  = n - 1;
-    int mid = start + (end - start) / 2;
-    int ans = -1;
-    
+int firstOccurence(int *arr, int start, int end, int key) {
+    int mid = start + ((end - start) / 2);
+    int first = -1;
+
     while(start <= end) {
         if(arr[mid] == key) {
-            ans = mid;
+            first = mid;
             end = mid - 1;
-        } else if(arr[mid] > key) {
-            end = mid - 1;
-        } else {
+        } 
+
+        if(arr[mid] < key) {
             start = mid + 1;
+        } else {
+            end = mid - 1;
         }
-        mid = start + (end - start) / 2;
+
+        mid = start + ((end - start) / 2);
     }
-    
-    return ans;
+
+    return first;
 }
 
-int lastOcc(int arr[], int n, int key) {
-    int start = 0;
-    int end  = n - 1;
-    int mid = start + (end - start) / 2;
-    int ans = -1;
-    
+int lastOccurence(int *arr, int start, int end, int key) {
+    int mid = start + ((end - start) / 2);
+    int last = -1;
+
     while(start <= end) {
         if(arr[mid] == key) {
-            ans = mid;
+            last = mid;
             start = mid + 1;
-        } else if(arr[mid] > key) {
-            end = mid - 1;
+        } 
+
+        if(arr[mid] < key) {
+            start = mid + 1;
         } else {
-            start = mid + 1;
+            end = mid - 1;
         }
-        mid = start + (end - start) / 2;
+
+        mid = start + ((end - start) / 2);
     }
-    
-    return ans;
+
+    return last;
 }
 
-int main()
-{
-    int arr[12] = {1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 35};
-   
-    cout<<"First Occurence of 3 is at "<<firstOcc(arr, 12, 3)<<" index"<<"\n";
-    cout<<"Last Occurence of 3 is at "<<lastOcc(arr, 12, 3)<<" index";
-   
-   return 0;
+int main() {
+    int arr[] = {5, 5, 5, 5, 6, 6, 7, 7};
+
+    int first = firstOccurence(arr, 0, 7, 5);
+    int last = lastOccurence(arr, 0, 7, 5);
+
+    cout << "First Occurence of 5 is "<<first<< endl;
+    cout << "Last Occurence of 5 is "<<last;
+    
+    return 0;
 }
